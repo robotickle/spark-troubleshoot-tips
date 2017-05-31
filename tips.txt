@@ -1,0 +1,7 @@
+1. When behind router(hotspot/router) - spark cannot connect and throws following error.
+	ERROR SparkContext: Error initializing SparkContext.
+	java.net.BindException: Can't assign requested address: Service 'sparkDriver' failed after 16 retries!
+A: a. $ hostname
+   b. sudo vi /etc/hosts
+   c. 172.0.0.1 hostnamegotfrom a.   No need to source /etc/hosts.
+
