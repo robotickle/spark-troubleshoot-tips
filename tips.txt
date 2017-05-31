@@ -3,5 +3,5 @@
 	java.net.BindException: Can't assign requested address: Service 'sparkDriver' failed after 16 retries!
 A: a. $ hostname
    b. sudo vi /etc/hosts
-   c. 172.0.0.1 hostnamegotfrom a.   No need to source /etc/hosts.
+   c. 127.0.0.1 hostnamegotfrom a.   No need to source /etc/hosts.
 
