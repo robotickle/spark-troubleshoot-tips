@@ -5,3 +5,15 @@ A: a. $ hostname
    b. sudo vi /etc/hosts
    c. 127.0.0.1 hostnamegotfrom a.   No need to source /etc/hosts.
 
+
+2. DF.RDD.pipe("/process.py") . -> this can work in scala,but was giving issues. so Better way to do is use pyspark.
+A: 	#!/bin/bash
+	spark-submit --master yarn-cluster \
+	--num-executors 25 --executor-cores 8 --executor-memory 32G \
+	--driver-cores 8 --driver-memory 6G \
+	--conf spark.driver.maxResultSize=3G \
+	--py-files otb-pyspark-package.zip \
+	otbMain.py
+	
+	You can copy the dependent scoring files in the absolute path of the data nodes say /tmp/process/xy.py etc..
+	Your This Pyspark will read score.py, after spark has exploded the .zip file, then pushes the code to nodes, where it 	      it expects the configs files from the absolute path. and the job will finish.
