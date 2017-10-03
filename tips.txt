@@ -17,3 +17,6 @@ A: 	#!/bin/bash
 	
 	You can copy the dependent scoring files in the absolute path of the data nodes say /tmp/process/xy.py etc..
 	Your This Pyspark will read score.py, after spark has exploded the .zip file, then pushes the code to nodes, where it 	      it expects the configs files from the absolute path. and the job will finish.
+	
+3. MCMC
+4. Confusion Matrix. (2,3 are spoken, when your regression starts giving -ve outputs. like for predicted days. After the 	prediction threshold is hit, we go negative, then we do what?? one option is bucket them using confusion 	matrix, 	as we are talking about MCMC now.)
