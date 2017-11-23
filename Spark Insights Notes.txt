@@ -1,0 +1,59 @@
+
+SPARK for 100s of TB Data
+=========================
+
+For running 100TB of data on spark will definitely take time but is possible. below are my points.
+
+I would still prefer Spark over MapReduce for this, given its strong apis for SQL, MLLib (now spark.ml), Transformation tasks like ETLs, and their benchmarking as provided below.
+
+
+1. Spark Operators are strict superset of MapReduce.
+2. Spark accomodates as much data as possible in memory, rest is spilled to disk. - Here spark performs External operations on spilled data on disk.
+3. Hence spark is capable of processing datasets that are larger than Memory.
+4. Efficiency depends on Partitions, usecase, memory requirements, and complexity of the aggregation, joins, number of shuffles etc..
+5. Once you have a partition strategy and efficient code, you can scale up linearly with number of nodes to decrease processing time and make more memory/disk/cpu available to process the data set.
+
+
+
+Providing you a link of Benchmark from Databricks(major spark commiters), who performed a shuffle operation for Sort. on 100TB of data in 23 minutes, and 1 PB in 234 minutes, on EC2.
+https://databricks.com/blog/2014/10/10/spark-petabyte-sort.html
+
+
+
+Having said that Map Reduce has its own purpose, for scenarios like:
+1. When Greedy resource allocation is not desired.
+	Spark, wont release containers until all jobs are completed.
+	Spark wont be smart enought to let the executors be released even if one executor is still churning data - this is code/optimizatino issue any ways. (resource is stale and is waiting on last job.)
+2. with same RAM you get more mappers. as containers in MR are released as soon as the job completes.
+
+
+
+Spark's site claims their on Disk is 10x Faster over any MR.
+
+
+
+Coherence Cache
+===============
+
+
+1. Read-through caching.
+2. Write-Through caching. GARs on cluster. and Exadata on backend.
+
+Write Behind and handling the Write failure by Re-Queuing for time insensitive data.
+
+The way to handle write failures:
+	1. Requeue the request.
+	2. use write-coalescing - which wraps multiple records in one transaction.
+	3. CacheStore.storeAll()
+	4. For write behind, you can Partition the cache across the cluster.
+	5. Enable the local-storage and ttl for 4.
+
+
+
+
+
+
+
+
+
+
