@@ -1,0 +1,8 @@
+spark-shell Tips:
+=================
+
+
+start sparkshell, and provide parameters to jvm such.
+
+	spark-shell --packages com.databricks:spark-csv_2.10:1.4.0
+	val df = sqlContext.read.format("csv").load("/data/tomorrow_neverdies/james_bond=2017-11-02/part-00000")

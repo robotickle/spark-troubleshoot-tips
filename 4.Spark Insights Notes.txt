@@ -50,6 +50,12 @@ The way to handle write failures:
 
 
 
+	Cloudera Developer Training for Apache Spark.
+	Introduction Chapter 1
+	-----------------------
+
+
+
 
 
 
