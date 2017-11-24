@@ -1,8 +1,35 @@
 spark-shell Tips:
 =================
 
+0. Free Scala mental models Books https://underscore.io/training/
 
-start sparkshell, and provide parameters to jvm such.
+
+1.start sparkshell, and provide parameters to jvm such.
 
 	spark-shell --packages com.databricks:spark-csv_2.10:1.4.0
 	val df = sqlContext.read.format("csv").load("/data/tomorrow_neverdies/james_bond=2017-11-02/part-00000")
+
+
+
+2. When behind router(hotspot/router) - spark cannot connect and throws following error.
+	ERROR SparkContext: Error initializing SparkContext.
+	java.net.BindException: Can't assign requested address: Service 'sparkDriver' failed after 16 retries!
+A: a. $ hostname
+   b. sudo vi /etc/hosts
+   c. 127.0.0.1 hostnamegotfrom a.   No need to source /etc/hosts.
+
+
+3. DF.RDD.pipe("/process.py") . -> this can work in scala,but was giving issues. so Better way to do is use pyspark.
+A: 	#!/bin/bash
+	spark-submit --master yarn-cluster \
+	--num-executors 25 --executor-cores 8 --executor-memory 32G \
+	--driver-cores 8 --driver-memory 6G \
+	--conf spark.driver.maxResultSize=3G \
+	--py-files otb-pyspark-package.zip \
+	otbMain.py
+	
+	You can copy the dependent scoring files in the absolute path of the data nodes say /tmp/process/xy.py etc..
+	Your This Pyspark will read score.py, after spark has exploded the .zip file, then pushes the code to nodes, where it 	      it expects the configs files from the absolute path. and the job will finish.
+	
+4. MCMC
+5. Confusion Matrix. (2,3 are spoken, when your regression starts giving -ve outputs. like for predicted days. After the 	prediction threshold is hit, we go negative, then we do what?? one option is bucket them using confusion 	matrix, 	as we are talking about MCMC now.)
