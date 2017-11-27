@@ -20,3 +20,7 @@ A: 	#!/bin/bash
 	
 3. MCMC
 4. Confusion Matrix. (2,3 are spoken, when your regression starts giving -ve outputs. like for predicted days. After the 	prediction threshold is hit, we go negative, then we do what?? one option is bucket them using confusion 	matrix, 	as we are talking about MCMC now.)
+
+
+5. Scala's collect().   - map and reduce in itself.
+6. Spark's collect().   - merely give me all data that i have t/f'ed till now.  (5,6 are different in that sense.)
