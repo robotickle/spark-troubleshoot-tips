@@ -33,3 +33,19 @@ A: 	#!/bin/bash
 	
 4. MCMC
 5. Confusion Matrix. (2,3 are spoken, when your regression starts giving -ve outputs. like for predicted days. After the 	prediction threshold is hit, we go negative, then we do what?? one option is bucket them using confusion 	matrix, 	as we are talking about MCMC now.)
+
+
+
+Pyspark && pyspark2
+	a. Cloudera by default provides anaconda version which might be < python 3.x
+	b. Install anaconda that is compatible with python 3.x
+	c. update pyspark config to point to this python version
+	d. switch to this new environment of python by
+		$ conda activate enve py36
+		$ conda env list
+		$ conda list -n py36
+		or if the environment is activated
+		(py36)$ conda list
+
+install Anaconda
+

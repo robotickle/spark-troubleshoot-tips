@@ -23,4 +23,4 @@ A: 	#!/bin/bash
 
 
 5. Scala's collect().   - map and reduce in itself.
-6. Spark's collect().   - merely give me all data that i have t/f'ed till now.  (5,6 are different in that sense.)
+6. Spark's collect().   - goes to all the partitions in all nodes, and merely says, give me all data that is left from the transformation i have done till now as a one giant Array back to the driver.  (5,6 are different in that sense.)
